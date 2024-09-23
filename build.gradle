@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+def properties = new Properties()
+file('src/main/resources/application.properties').withInputStream { inputStream ->
+    properties.load(inputStream)
+}
+
+group 'com.bookmap.addons'
+def version = properties.getProperty('version')
+def brApiVersion = properties.getProperty('brapi.version')
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://maven.bookmap.com/maven2/releases/"
+    }
+    maven {
+        url file('mavenLib')
+    }
+}
+
+dependencies {
+    compileOnly group: 'com.bookmap.api', name: 'api-core', version: '7.5.0.4'
+    compileOnly group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+    //load Broadcasting API
+    final def brAPI = "${brApiVersion}"
+    implementation group: 'com.bookmap.addons', name: 'broadcasting-api', version: brAPI
+    compileOnly group: 'com.bookmap.addons', name: 'broadcasting-api', version: brAPI, classifier: 'javadoc'
+
+    //load BrAPI providers modules
+    implementation fileTree (dir: "providers/modules", include: "*.jar")
+}
+
+jar {
+    archiveName "Demo-Consumer-${version}.jar"
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    into 'resources', {
+        from 'resources'
+    }
+}
