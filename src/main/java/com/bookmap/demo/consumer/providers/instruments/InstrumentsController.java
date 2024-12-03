@@ -20,8 +20,8 @@ public abstract class InstrumentsController {
             return new StrengthLevelInstrumentsController(connector);
         } else if (controller.equals(AvwapInstrumentsController.class)) {
             return new AvwapInstrumentsController(connector);
-        } else if (controller.equals(AdxInstrumentsController.class)) {
-            return new AdxInstrumentsController(connector);
+        } else if (controller.equals(TaIndicatorInstrumentsController.class)) {
+            return new TaIndicatorInstrumentsController(connector);
         } else {
             throw new IllegalArgumentException("Unknown controller class: " + controller);
         }
