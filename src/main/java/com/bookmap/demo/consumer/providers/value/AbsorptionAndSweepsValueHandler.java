@@ -70,7 +70,7 @@ public class AbsorptionAndSweepsValueHandler implements ProviderValueHandler{
     }
 
     @Override
-    public EventFilter<EventInterface> castFilter(Object o) {
+    public EventFilter<Event> castFilter(Object o) {
         try {
             return CastUtilities.castObject(o, Filter.class);
         } catch (FailedToCastObject e) {

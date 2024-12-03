@@ -1,14 +1,13 @@
 package com.bookmap.demo.consumer.providers;
 
 import com.bookmap.demo.consumer.Connector;
-import com.bookmap.demo.consumer.providers.instruments.AdxInstrumentsController;
 import com.bookmap.demo.consumer.providers.instruments.AvwapInstrumentsController;
 import com.bookmap.demo.consumer.providers.instruments.DefaultInstrumentsController;
 import com.bookmap.demo.consumer.providers.instruments.InstrumentsController;
 import com.bookmap.demo.consumer.providers.instruments.MarketPulseInstrumentsController;
 import com.bookmap.demo.consumer.providers.instruments.StrengthLevelInstrumentsController;
+import com.bookmap.demo.consumer.providers.instruments.TaIndicatorInstrumentsController;
 import com.bookmap.demo.consumer.providers.value.AbsorptionAndSweepsValueHandler;
-import com.bookmap.demo.consumer.providers.value.AdxValueHandler;
 import com.bookmap.demo.consumer.providers.value.AvwapValueHandler;
 import com.bookmap.demo.consumer.providers.value.BreakevenPointValueHandler;
 import com.bookmap.demo.consumer.providers.value.IntrinsicValueHandler;
@@ -17,6 +16,11 @@ import com.bookmap.demo.consumer.providers.value.ProviderValueHandler;
 import com.bookmap.demo.consumer.providers.value.SimpleDemoProviderValueHandler;
 import com.bookmap.demo.consumer.providers.value.SitValueHandler;
 import com.bookmap.demo.consumer.providers.value.StrengthLevelValueHandler;
+import com.bookmap.demo.consumer.providers.value.TaIndicatorAdxValueHandler;
+import com.bookmap.demo.consumer.providers.value.TaIndicatorMacdValueHandler;
+import com.bookmap.demo.consumer.providers.value.TaIndicatorObvValueHandler;
+import com.bookmap.demo.consumer.providers.value.TaIndicatorRsiValueHandler;
+import com.bookmap.demo.consumer.providers.value.TaIndicatorWilliamsRValueHandler;
 
 public enum  Provider {
     ABSORPTION_INDICATOR("Absorption indicator","velox.indicators.absorption.AbsorptionIndicator",
@@ -35,12 +39,21 @@ public enum  Provider {
                  IntrinsicValueHandler.class, DefaultInstrumentsController.class),
     STRENGTH_LEVEL("Strength level addon", "com.bookmap.addons.strengthlevel.StrengthLevelAddon",
             StrengthLevelValueHandler.class, StrengthLevelInstrumentsController.class),
-    ADX("ADX","com.bookmap.addons.ta.adx.Adx",
-                 AdxValueHandler.class, AdxInstrumentsController.class),
     AVWAP("Anchored VWAP","com.bookmap.addons.avwap.Avwap",
             AvwapValueHandler.class, AvwapInstrumentsController.class),
     SIMPLE_DEMO_PROVIDER("Simple Demo Provider", "com.bookmap.demo.simple.provider.SimpleDemoProvider",
-            SimpleDemoProviderValueHandler.class, DefaultInstrumentsController.class);
+            SimpleDemoProviderValueHandler.class, DefaultInstrumentsController.class),
+    //technical indicators
+    ADX("ADX", "com.bookmap.addons.ta.adx.Adx",
+            TaIndicatorAdxValueHandler.class, TaIndicatorInstrumentsController.class),
+    MACD("MACD", "com.bookmap.addons.ta.macd.Macd",
+            TaIndicatorMacdValueHandler.class, TaIndicatorInstrumentsController.class),
+    OBV("OBV", "com.bookmap.addons.ta.obv.Obv",
+            TaIndicatorObvValueHandler.class, TaIndicatorInstrumentsController.class),
+    RSI("RSI", "com.bookmap.addons.ta.rsi.Rsi",
+            TaIndicatorRsiValueHandler.class, TaIndicatorInstrumentsController.class),
+    WILLIAMSR("Williams%R", "com.bookmap.addons.ta.williamsr.WilliamsR",
+            TaIndicatorWilliamsRValueHandler.class, TaIndicatorInstrumentsController.class);
 
     private final String shortName;
     private final String fullName;

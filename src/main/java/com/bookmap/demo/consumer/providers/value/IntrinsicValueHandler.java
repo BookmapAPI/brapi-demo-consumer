@@ -50,7 +50,7 @@ public class IntrinsicValueHandler implements ProviderValueHandler {
         }
 
         @Override
-        public EventFilter<EventInterface> castFilter(Object o) {
+        public EventFilter<Event> castFilter(Object o) {
             return null;
         }
 

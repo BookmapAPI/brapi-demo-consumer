@@ -65,7 +65,7 @@ public class BreakevenPointValueHandler implements ProviderValueHandler{
     }
 
     @Override
-    public EventFilter<?> castFilter(Object o) {
+    public EventFilter<Event> castFilter(Object o) {
         return o1 -> o1;
     }
 

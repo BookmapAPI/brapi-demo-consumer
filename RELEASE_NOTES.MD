@@ -18,3 +18,13 @@
 
 # 0.34
 - Updated BrAPI to v0.50.
+
+# 0.36
+- Updated Absorption/Sweeps provider model to v0.09.
+
+# 0.37
+- Updated BrAPI to v0.52.
+
+# 0.38
+- Updated Absorption/Sweeps provider model to v0.10.
+- Updated BrAPI to v0.53.

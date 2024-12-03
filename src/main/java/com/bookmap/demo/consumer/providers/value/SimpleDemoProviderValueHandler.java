@@ -43,7 +43,7 @@ public class SimpleDemoProviderValueHandler implements ProviderValueHandler{
     }
 
     @Override
-    public EventFilter castFilter(Object o) {
+    public EventFilter<Event> castFilter(Object o) {
         return null;
     }
 

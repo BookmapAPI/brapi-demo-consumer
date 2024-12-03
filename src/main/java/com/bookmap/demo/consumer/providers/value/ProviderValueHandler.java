@@ -4,7 +4,6 @@ import com.bookmap.addons.broadcasting.api.view.BrDataStructureInterface;
 import com.bookmap.addons.broadcasting.api.view.Event;
 import com.bookmap.addons.broadcasting.api.view.EventFilter;
 import com.bookmap.demo.consumer.DemoConsumer;
-import com.bookmap.demo.simple.provider.SimpleDemoProvider;
 import velox.api.layer1.data.InstrumentInfo;
 
 import java.time.Instant;
@@ -40,8 +39,16 @@ public interface ProviderValueHandler {
             return new BreakevenPointValueHandler();
         } else if(handler.equals(IntrinsicValueHandler.class)) {
             return new IntrinsicValueHandler();
-        } else if(handler.equals(AdxValueHandler.class)) {
-            return new AdxValueHandler();
+        } else if(handler.equals(TaIndicatorAdxValueHandler.class)) {
+            return new TaIndicatorAdxValueHandler();
+        } else if(handler.equals(TaIndicatorMacdValueHandler.class)) {
+            return new TaIndicatorMacdValueHandler();
+        } else if(handler.equals(TaIndicatorObvValueHandler.class)) {
+            return new TaIndicatorObvValueHandler();
+        } else if(handler.equals(TaIndicatorRsiValueHandler.class)) {
+            return new TaIndicatorRsiValueHandler();
+        } else if(handler.equals(TaIndicatorWilliamsRValueHandler.class)) {
+            return new TaIndicatorWilliamsRValueHandler();
         } else if (handler.equals(StrengthLevelValueHandler.class)) {
             return new StrengthLevelValueHandler();
         } else if (handler.equals(AvwapValueHandler.class)) {
@@ -61,7 +68,7 @@ public interface ProviderValueHandler {
 
     List<Event> castEventsInOurClassLoader(List<Object> o);
 
-    EventFilter castFilter(Object o);
+    EventFilter<Event> castFilter(Object o);
 
     Object castSettings(Object o);
 
