@@ -39,7 +39,7 @@ public class Connector {
     private final Map<String, SettingsListener> settingsListenersByGeneratorName = new ConcurrentHashMap<>();
     private final Map<String, LiveConnectionListener> liveSubscriptionListenersByGeneratorName = new ConcurrentHashMap<>();
     private BrDataStructureInterface dataStructureInterface;
-    private com.bookmap.demo.consumer.listeners.EventListener eventListener;
+    private EventListener eventListener;
 
     public Connector(Layer1ApiProvider provider, BroadcasterConsumer broadcasterConsumer,Provider providerAddon) {
         this.provider = provider;
